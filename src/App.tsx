@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +14,7 @@ import { firebaseConfig, reactReduxFirebaseConfig } from './configuration/fireba
 import MainScreen from './screens/main';
 import { createStore} from './redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import LoginScreen from './screens/Login';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -30,7 +31,7 @@ function App() {
         <Router>
           <Switch>
             <Route path="/login">
-
+              <LoginScreen />
             </Route>
             <Route path="/submit"></Route>
             <Route path="/">
