@@ -4,7 +4,7 @@ import FullScreenContainer from '../components/FullScreen';
 const MainScreen = () => {
   return (
     <FullScreenContainer>
-      hi
+      
     </FullScreenContainer>
   )
 }
