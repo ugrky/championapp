@@ -15,6 +15,7 @@ import MainScreen from './screens/main';
 import { createStore} from './redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import LoginScreen from './screens/Login';
+import SubmitCheerScreen from './screens/SubmitCheer';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -33,7 +34,9 @@ function App() {
             <Route path="/login">
               <LoginScreen />
             </Route>
-            <Route path="/submit"></Route>
+            <Route path="/submit">
+              <SubmitCheerScreen />
+            </Route>
             <Route path="/">
               <MainScreen />
             </Route>
