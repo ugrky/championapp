@@ -15,15 +15,11 @@ import MainScreen from './screens/main';
 import { createStore} from './redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 
+firebase.initializeApp(firebaseConfig);
+
 const store = createStore();
 
 function App() {
-
-  // Initialization
-  useEffect(() => {
-    firebase.initializeApp(firebaseConfig);
-  }, []);
-
   return (
     <ReduxProvider store={store}>
       <ReactReduxFirebaseProvider
