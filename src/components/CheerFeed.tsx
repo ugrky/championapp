@@ -1,14 +1,16 @@
 import React from 'react';
-import FlexContainer from './FlexContainer';
-import FullContentContainer from './FullContentContainer';
+import { Color } from '../colors';
 
 const CheerFeed = () => {
   return (
-    <FullContentContainer>
-      <FlexContainer flexDirection="column" justifyContent="center" alignItems="center">
-
-      </FlexContainer>
-    </FullContentContainer>
+    <p style={{
+      flex: 1, display: 'flex', justifyContent: 'center',
+      alignItems: 'center', color: Color.WhiteOff,
+      fontSize: 42, fontFamily: 'GTAmericaCompressedBold',
+      fontStyle: 'italic'
+    }}>
+      Hello World
+    </p>
   )
 }
 
