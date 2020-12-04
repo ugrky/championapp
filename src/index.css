@@ -1,3 +1,28 @@
+
+@font-face {
+  font-family: "GTAmericaBold";
+  src: local("GTAmericaBold"), url("./assets/GT-America-Bold.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "GTAmericaCompressedBold";
+  src: local("GTAmericaCompressedBold"), url("./assets/GT-America-Compressed-Bold.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "GTAmericaExtendedBold";
+  src: local("GTAmericaExtendedBold"), url("./assets/GT-America-Extended-Bold.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "GTAmerica";
+  src: local("GTAmerica"), url("./assets/GT-America-Regular.otf") format("opentype");
+  font-weight: normal;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -7,11 +32,10 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: GTAmerica;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: normal;
 }
 
 code {
