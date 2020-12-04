@@ -17,6 +17,7 @@ import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import LoginScreen from './screens/Login';
 import SubmitCheerScreen from './screens/SubmitCheer';
 import SingleCheerScreen from './screens/SingleCheer';
+import MenuContainer from './containers/Menu';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -31,6 +32,9 @@ function App() {
         dispatch={store.dispatch}
       >
         <Router>
+          <nav>
+            <MenuContainer />
+          </nav>
           <Switch>
             <Route path="/login">
               <LoginScreen />
