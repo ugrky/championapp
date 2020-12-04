@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 import React from 'react';
 import { StyledFirebaseAuth } from 'react-firebaseui';
+import Headline from '../../components/Headline';
+import PageLayout from '../../components/PageLayout';
 
 
 // Configure FirebaseUI.
@@ -18,11 +20,10 @@ const uiConfig = {
 
 function LoginScreen() {
   return (
-    <div>
-      <h1>ChampionApp</h1>
-      <p>Please sign-in:</p>
+    <PageLayout>
+      <Headline text="SIGN-IN" />
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-    </div>
+    </PageLayout>
   );
 }
 
