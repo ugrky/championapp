@@ -11,7 +11,12 @@ interface IProps {
 
 const FlexContainer: FunctionComponent<IProps> = ({ children, direction }) => {
   return (
-    <div style={{ display: 'flex', flexDirection: direction }}>
+    <div style={{
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      flexDirection: direction
+      }}>
       {children}
     </div>
   )
