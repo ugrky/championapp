@@ -5,9 +5,13 @@ export enum FlexDirection {
   COLUMN = 'column'
 }
 
-const FlexContainer: FunctionComponent = ({ children }) => {
+interface IProps {
+  direction: FlexDirection;
+}
+
+const FlexContainer: FunctionComponent<IProps> = ({ children, direction }) => {
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: direction }}>
       {children}
     </div>
   )
