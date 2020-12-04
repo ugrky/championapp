@@ -1,1 +1,1 @@
-export default {}
+export { submitCheer } from './submitCheer';
