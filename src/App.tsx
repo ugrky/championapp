@@ -10,6 +10,8 @@ import { Color } from './colors';
 import firebase from 'firebase';
 import { firebaseConfig } from './configuration/firebase';
 
+import MainScreen from './screens/main';
+
 function App() {
 
   // Initialize firebase config
@@ -20,9 +22,13 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login"></Route>
+        <Route path="/login">
+
+        </Route>
         <Route path="/submit"></Route>
-        <Route path="/"></Route>
+        <Route path="/">
+          <MainScreen />
+        </Route>
       </Switch>
     </Router>
   );
