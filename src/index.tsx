@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './assets/GT-America-Bold.otf';
+import './assets/GT-America-Compressed-Bold.otf';
+import './assets/GT-America-Extended-Bold.otf';
+import './assets/GT-America-Regular.otf';
 import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
