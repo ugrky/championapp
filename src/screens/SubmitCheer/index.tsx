@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useFirebase } from 'react-redux-firebase';
 import Select from 'react-select';
 
-import { CheerType } from '../../types';
+import { Cheer, CheerType } from '../../types';
 
 
 const cheerOptions = [{
@@ -23,7 +23,7 @@ function SubmitCheerScreen() {
   const [optionalName, setOptionalName] = useState('');
 
   const submitCheer = useCallback(() => {
-    const cheerData = {
+    const cheerData: Cheer = {
       receiver,
       cheerType: cheerType.value,
       cheerContent,
