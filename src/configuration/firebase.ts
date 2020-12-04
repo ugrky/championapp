@@ -7,3 +7,7 @@ export const firebaseConfig = {
   messagingSenderId: "184768808643",
   appId: "1:184768808643:web:28f7ec9eb1a55fd5040476"
 };
+
+export const reactReduxFirebaseConfig = {
+  userProfile: 'users',
+};

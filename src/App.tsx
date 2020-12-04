@@ -5,32 +5,45 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { Provider as ReduxProvider } from 'react-redux';
 
 import { Color } from './colors';
 import firebase from 'firebase';
-import { firebaseConfig } from './configuration/firebase';
+import { firebaseConfig, reactReduxFirebaseConfig } from './configuration/firebase';
 
 import MainScreen from './screens/main';
+import { createStore} from './redux';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+
+const store = createStore();
 
 function App() {
 
-  // Initialize firebase config
+  // Initialization
   useEffect(() => {
     firebase.initializeApp(firebaseConfig);
   }, []);
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/login">
+    <ReduxProvider store={store}>
+      <ReactReduxFirebaseProvider
+        firebase={firebase}
+        config={reactReduxFirebaseConfig}
+        dispatch={store.dispatch}
+      >
+        <Router>
+          <Switch>
+            <Route path="/login">
 
-        </Route>
-        <Route path="/submit"></Route>
-        <Route path="/">
-          <MainScreen />
-        </Route>
-      </Switch>
-    </Router>
+            </Route>
+            <Route path="/submit"></Route>
+            <Route path="/">
+              <MainScreen />
+            </Route>
+          </Switch>
+        </Router>
+      </ReactReduxFirebaseProvider>
+    </ReduxProvider>
   );
 }
 
