@@ -1,20 +1,17 @@
 import React from 'react';
-import FlexContainer, { FlexDirection } from '../components/FlexContainer';
-import FlexItem from '../components/FlexItem';
-import FullScreenContainer from '../components/FullScreen';
+import { Color } from '../colors';
+import CheerFeed from '../components/CheerFeed';
 
 const MainScreen = () => {
   return (
-    <FullScreenContainer>
-      <FlexContainer direction={FlexDirection.COLUMN}>
-        <FlexItem flex={5}>
-          Hi
-        </FlexItem>
-        <FlexItem flex={1}>
-          Hoho
-        </FlexItem>
-      </FlexContainer>
-    </FullScreenContainer>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: Color.Charcoal }}>
+      <div style={{ flex: 2, display: 'flex'}}>
+        
+      </div>
+      <div style={{ flex: 1, display: 'flex'}}>
+        <CheerFeed />
+      </div>
+    </div>
   )
 }
 
