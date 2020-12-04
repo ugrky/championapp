@@ -13,6 +13,8 @@ const MainScreen = () => {
 
   const cheers = useSelector((state: any) => state.firebase.ordered.cheers);
 
+  console.log('cheers -> ', cheers);
+
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: Color.Charcoal }}>
       <div style={{ flex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -21,8 +23,8 @@ const MainScreen = () => {
           data={[10, 20, 70]}
         />
       </div>
-      <div style={{ flex: 1, display: 'flex'}}>
-        <CheerFeed />
+      <div style={{ flex: 1, textAlign: 'center'}}>
+        <CheerFeed cheers={cheers} />
       </div>
     </div>
   )
