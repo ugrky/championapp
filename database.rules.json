@@ -1,6 +1,9 @@
 {
   "rules": {
-    ".read": false,
-    ".write": false
+    ".read": true,
+    "cheers": {
+      ".read": true,
+      ".write": "auth.token.email.endsWith('@soundboks.com')"
+    }
   }
 }
