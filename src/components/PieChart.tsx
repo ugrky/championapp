@@ -4,6 +4,7 @@ import { scaleOrdinal } from '@visx/scale';
 import { Group } from '@visx/group';
 import { GradientPinkBlue } from '@visx/gradient';
 import { animated, useTransition, interpolate } from 'react-spring';
+import * as CSS from 'csstype';
 
 
 
@@ -30,7 +31,7 @@ export default function PieChart({
   animate = true,
   data,
 }: PieProps) {
-  const [selectedBrowser, setSelectedBrowser] = useState<string | null>(null);
+  const [selectedCheerType, setSelectedBrowser] = useState<string | null>(null);
 
   if (width < 10) return null;
 
@@ -41,29 +42,34 @@ export default function PieChart({
   const centerX = innerWidth / 2;
   const donutThickness = 100;
 
-  const browserUsage: Record<string, number> = {
+  const cheerTypes: Record<string, number> = {
     'Always Aspire': data[0],
     'Champion Community': data[1],
     'Be Brave': data[2],
   };
   
-  const browserNames = Object.keys(browserUsage);
+  const cheerKeys = Object.keys(cheerTypes);
   
-  const browsers = browserNames.map((name) => ({
+  const cheers = cheerKeys.map((name) => ({
     label: name,
-    usage: browserUsage[name],
+    usage: cheerTypes[name],
   }));
 
-  const getBrowserColor = scaleOrdinal({
-    domain: browserNames,
+  const getCheerChartArcColor = scaleOrdinal({
+    domain: cheerKeys,
     range: [
-      'rgba(255,255,255,0.7)',
-      'rgba(255,255,255,0.6)',
-      'rgba(255,255,255,0.5)',
-      'rgba(255,255,255,0.4)',
-      'rgba(255,255,255,0.3)',
-      'rgba(255,255,255,0.2)',
-      'rgba(255,255,255,0.1)',
+      'rgba(0,0,0,1)',
+      'rgba(255,255,255,1)',
+      'rgba(250,70,22,1)',
+    ],
+  });
+
+  const getCheerChartArcBlendMode = scaleOrdinal<string, CSS.Property.MixBlendMode>({
+    domain: cheerKeys,
+    range: [
+      'normal',
+      'difference',
+      'normal'
     ],
   });
 
@@ -74,7 +80,7 @@ export default function PieChart({
       <Group top={centerY + margin.top} left={centerX + margin.left + 200}>
         <Pie
           data={
-            selectedBrowser ? browsers.filter(({ label }) => label === selectedBrowser) : browsers
+            selectedCheerType ? cheers.filter(({ label }) => label === selectedCheerType) : cheers
           }
           pieValue={usage}
           outerRadius={radius}
@@ -89,9 +95,10 @@ export default function PieChart({
               getKey={arc => arc.data.label}
               onClickDatum={({ data: { label } }) =>
                 animate &&
-                setSelectedBrowser(selectedBrowser && selectedBrowser === label ? null : label)
+                setSelectedBrowser(selectedCheerType && selectedCheerType === label ? null : label)
               }
-              getColor={arc => getBrowserColor(arc.data.label)}
+              getColor={arc => getCheerChartArcColor(arc.data.label)}
+              getLabelBlendMode={arc => getCheerChartArcBlendMode(arc.data.label)}
             />
           )}
         </Pie>
@@ -120,6 +127,7 @@ type AnimatedPieProps<Datum> = ProvidedProps<Datum> & {
   animate?: boolean;
   getKey: (d: PieArcDatum<Datum>) => string;
   getColor: (d: PieArcDatum<Datum>) => string;
+  getLabelBlendMode: (d: PieArcDatum<Datum>) => CSS.Property.MixBlendMode;
   onClickDatum: (d: PieArcDatum<Datum>) => void;
   delay?: number;
 };
@@ -130,6 +138,7 @@ function AnimatedPie<Datum>({
   path,
   getKey,
   getColor,
+  getLabelBlendMode,
   onClickDatum,
 }: AnimatedPieProps<Datum>) {
   const transitions = useTransition<PieArcDatum<Datum>, AnimatedStyles>(
@@ -184,6 +193,9 @@ function AnimatedPie<Datum>({
                     fontFamily="GTAmericaExtendedBold"
                     textAnchor="middle"
                     pointerEvents="none"
+                    style={{
+                      mixBlendMode: getLabelBlendMode(arc),
+                    }}
                   >
                     {getKey(arc)}
                   </text>

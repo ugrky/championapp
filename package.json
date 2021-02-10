@@ -19,6 +19,7 @@
     "@visx/scale": "^1.1.0",
     "@visx/shape": "^1.2.0",
     "bootstrap": "^4.5.3",
+    "csstype": "^3.0.6",
     "firebase": "^8.1.2",
     "firebaseui": "^4.7.1",
     "framer-motion": "^2.9.5",
